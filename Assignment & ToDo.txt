@@ -1,0 +1,24 @@
+6. Design, implement, and test a class that represents an amount of time in minutes and seconds. The class should provide a constructor that sets the time to a specified number of minutes and seconds. The default constructor should create an object for a time of zero minutes and zero seconds. The class should provide observers that return the minutes and the seconds separately, and an observer that returns the total time in seconds (minutes × 60 + seconds). Boolean comparison observers should be provided that test whether two times are equal, one time is greater than the other, or one time is less than the other. (You may use RelationType and function ComparedTo if you choose.) A function should be provided that adds one time to another, and another function that subtracts one time from another. The class should not allow negative times (subtraction of more time than is currently stored should result in a time of 0:00). This class should be immutable.
+
+8. Design, implement, and test a class that represents a phone number. The number should be represented by a country code, an area code, a number, and a type. The first three values can be integers. The type member is an enumeration of HOME, OFFICE, FAX, CELL, and PAGER. The class should provide a default constructor that sets all of the integer values to zero and the type to HOME. A constructor that enables all of the values to be set should be provided as well. You also should provide a constructor that takes just the number and type as arguments, and sets the country and area codes to those of your location. The class will have observers that enable each data member to be retrieved, and transformers that allow each data member to be changed. An additional observer should be provided that compares two phone numbers for equality.
+
+
+Exercise 6: Time class
+	1) Create a class that stores time in minutes and seconds called 'time'
+	2) Create a default constructor that initalizes to 0, and a construtor to specify the initial value of the time
+	3) Create functions to return minutes, seconds, and total time in seconds
+	4) Create greater than/less than/equal to functions
+	5) Addition/subtraction functions
+	6) Class will not allow negative values (anything < 0 defaults to 0
+	7) Class is immutable
+	
+Exercise 7: Phone number class
+	1) Create a class to store a phone number
+	2) Must store: country code, area code, phone number, phone type
+		a) The first three values "can be integers" - do they have to be?
+		b) Phone type should be an enum consisting of 'HOME, OFFICE, FAX, CELL, PAGER'
+	3) The default constructor should set all numbers to 0 and the type to 'HOME'
+	4) A constructor should be created that initialzes the class with a country/area/phone number and phone type
+	5) Create functions that allow retrieval of data
+	6) Create functions that allow modification of data
+	7) Create greater than/less that/equal to functions
