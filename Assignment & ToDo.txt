@@ -4,11 +4,11 @@
 
 
 Exercise 6: Time class
-	1) Create a class that stores time in minutes and seconds called 'time'
-	2) Create a default constructor that initalizes to 0, and a construtor to specify the initial value of the time
-	3) Create functions to return minutes, seconds, and total time in seconds
-	4) Create greater than/less than/equal to functions
-	5) Addition/subtraction functions
+	1) [done] Create a class that stores time in minutes and seconds called 'time'
+	2) [done] Create a default constructor that initalizes to 0, and a construtor to specify the initial value of the time
+	3) [done] Create functions to return minutes, seconds, and total time in seconds
+	4) [done] Create greater than/less than/equal to functions
+	5) [done] Addition/subtraction functions
 	6) Class will not allow negative values (anything < 0 defaults to 0
 	7) Class is immutable
 	
