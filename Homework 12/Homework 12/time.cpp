@@ -1,14 +1,29 @@
 #include <iostream>
+#include <sstream>
+#include <string>
 
 #include "time.h"
 
-time::time()
+namespace util
+{
+	std::string toString(int value)
+	{
+		std::string output;
+		std::stringstream convert;
+		convert << value;
+		convert >> output;
+
+		return output;
+	}
+};
+
+ztime::ztime()
 {
 	sec = 0;
 	min = 0;
 }
 
-time::time(int seconds)
+ztime::ztime(int seconds)
 {
 	sec = seconds;
 	min = 0;
@@ -16,14 +31,25 @@ time::time(int seconds)
 	roundValues();
 }
 
-time::time(int seconds, int minutes)
+ztime::ztime(int seconds, int minutes)
 {
 	sec = seconds;
 	min = minutes;
 	roundValues();
 }
 
-void time::roundValues()
+ztime::ztime(time_t _time)		//Note, this constructor rounds down to the nearest hour, therefore any data stored in hours or larger units is discarded
+{
+	sec = _time % 60;
+	min = (_time / 60) % 60;
+}
+
+ztime ztime::now()
+{
+	return ztime(time(0));
+}
+
+void ztime::roundValues()
 {
 	if(sec < 0)	//If we have a negative value for seconds, convert minutes to seconds and add it
 	{
@@ -43,95 +69,100 @@ void time::roundValues()
 		min += sec / 60;
 		sec = sec % 60;
 	}
-	
+
 }
 
-time time::operator+(time & other)
+ztime ztime::operator+(ztime & other)
 {
-	return time(getTotal() + other.getTotal());
+	return ztime(getTotal() + other.getTotal());
 }
 
-void time::operator+=(time & other)
+void ztime::operator+=(ztime & other)
 {
 	*this = getTotal() + other.getTotal();
 }
 
-time time::operator-(time & other)
+ztime ztime::operator-(ztime & other)
 {
-	return time(getTotal() - other.getTotal());
+	return ztime(getTotal() - other.getTotal());
 }
 
-void time::operator-=(time & other)
+void ztime::operator-=(ztime & other)
 {
 	*this = getTotal() - other.getTotal();
 }
 
-time time::operator*(time & other)
+ztime ztime::operator*(ztime & other)
 {
-	time(getTotal() * other.getTotal());
+	return ztime(getTotal() * other.getTotal());
 }
 
-time time::operator*(int & other)
+ztime ztime::operator*(int & other)
 {
-	time(getTotal() * other);
+	return ztime(getTotal() * other);
 }
 
-void time::operator*=(time & other)
-{
-	*this = *this * other;
-}
-
-void time::operator*=(int & other)
+void ztime::operator*=(ztime & other)
 {
 	*this = *this * other;
 }
 
-time time::operator/(time & other)
+void ztime::operator*=(int & other)
 {
-	return time(getTotal() / other.getTotal());
+	*this = *this * other;
 }
 
-time time::operator/(int & other)
+ztime ztime::operator/(ztime & other)
 {
-	return time(getTotal() / other);
+	return ztime(getTotal() / other.getTotal());
 }
 
-void time::operator/=(time & other)
+ztime ztime::operator/(int & other)
+{
+	return ztime(getTotal() / other);
+}
+
+void ztime::operator/=(ztime & other)
 {
 	*this = *this / other;
 }
 
-void time::operator/=(int & other)
+void ztime::operator/=(int & other)
 {
 	*this = *this / other;
 }
 
-bool time::operator==(time & other)
+bool ztime::operator==(ztime & other)
 {
 	return getTotal() == other.getTotal();
 }
 
-bool time::operator<(time & other)
+bool ztime::operator<(ztime & other)
 {
 	return getTotal() < other.getTotal();
 }
 
-bool time::operator<=(time & other)
+bool ztime::operator<=(ztime & other)
 {
 	return getTotal() <= other.getTotal();
 }
 
-bool time::operator>(time & other)
+bool ztime::operator>(ztime & other)
 {
 	return getTotal() > other.getTotal();
 }
 
-bool time::operator>=(time & other)
+bool ztime::operator>=(ztime & other)
 {
 	return getTotal() >= other.getTotal();
 }
 
-void const time::print()
+std::string const ztime::toString()
 {
-	std::cout << "min: " << min << " sec: " << sec << std::endl;
+	return util::toString(min) + " minutes and " + util::toString(sec) + " seconds";
+}
+
+void const ztime::print()
+{
+	std::cout << toString() << std::endl;
 }

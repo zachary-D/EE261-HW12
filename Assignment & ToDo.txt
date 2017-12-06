@@ -12,13 +12,13 @@ Exercise 6: Time class
 	6) Class will not allow negative values (anything < 0 defaults to 0
 	7) Class is immutable
 	
-Exercise 7: Phone number class
-	1) Create a class to store a phone number
-	2) Must store: country code, area code, phone number, phone type
-		a) The first three values "can be integers" - do they have to be?
-		b) Phone type should be an enum consisting of 'HOME, OFFICE, FAX, CELL, PAGER'
-	3) The default constructor should set all numbers to 0 and the type to 'HOME'
-	4) A constructor should be created that initialzes the class with a country/area/phone number and phone type
-	5) Create functions that allow retrieval of data
-	6) Create functions that allow modification of data
-	7) Create greater than/less that/equal to functions
+Exercise 8: Phone number class
+	1) [done] Create a class to store a phone number
+	2) [done] Must store: country code, area code, phone number, phone type
+		a) [done, but confirm valid solution] The first three values "can be integers" - do they have to be?
+		b) [done] Phone type should be an enum consisting of 'HOME, OFFICE, FAX, CELL, PAGER'
+	3) [done] The default constructor should set all numbers to 0 and the type to 'HOME'
+	4) [done] A constructor should be created that initialzes the class with a country/area/phone number and phone type
+	5) [done] Create functions that allow retrieval of data
+	6) [done] Create functions that allow modification of data
+	7) [done] Create is equal to operator

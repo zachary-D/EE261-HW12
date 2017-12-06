@@ -1,11 +1,22 @@
 #pragma once
 
-class time
+#include <string>
+#include <time.h>	//C++'s pre-baked time header, included here for time_t support
+
+namespace util
+{
+	std::string toString(int value);
+}
+
+class ztime	//Named ztime instead of time to avoid naming conflicts
 {
 public:
-	time();
-	time(int seconds);
-	time(int seconds, int minutes);
+	ztime();
+	ztime(int seconds);
+	ztime(int seconds, int minutes);
+	ztime(time_t _time);
+
+	static ztime now();		//A psudo-constructor that creates an element containing the current time, capped at an hour
 
 private:
 	int min = 0;
@@ -18,26 +29,28 @@ public:
 	//NOTE: getMin() and getSec() do NOT include the negative, if the value is negative
 	int const getMin() { return min; }
 	int const getSec() { return sec; }
-	int const getTotal() { return (neg == true? -1 : 1) * (min * 60 + sec); }
+	int const getTotal() { return (neg == true ? -1 : 1) * (min * 60 + sec); }
 
-	time operator+(time & other);
-	void operator+=(time & other);
-	time operator-(time & other);
-	void operator-=(time & other);
+	ztime operator+(ztime & other);
+	void operator+=(ztime & other);
+	ztime operator-(ztime & other);
+	void operator-=(ztime & other);
 
-	time operator*(time & other);
-	time operator*(int & other);
-	void operator*=(time & other);
+	ztime operator*(ztime & other);
+	ztime operator*(int & other);
+	void operator*=(ztime & other);
 	void operator*=(int & other);
-	time operator/(time & other);
-	time operator/(int & other);
-	void operator/=(time & other);
+	ztime operator/(ztime & other);
+	ztime operator/(int & other);
+	void operator/=(ztime & other);
 	void operator/=(int & other);
 
-	bool operator<(time & other);
-	bool operator<=(time & other);
-	bool operator>(time & other);
-	bool operator>=(time & other);
+	bool operator==(ztime & other);
+	bool operator<(ztime & other);
+	bool operator<=(ztime & other);
+	bool operator>(ztime & other);
+	bool operator>=(ztime & other);
 
+	std::string const toString();
 	void const print();
 };
