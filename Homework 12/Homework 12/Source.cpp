@@ -19,6 +19,16 @@ int main()
 		cout << "In 10 minutes it will be " << (now + ztime(0, 10)).toString() << " past the hour." << endl;
 
 		cout << now.toString() << " minus 1 minute and 3 seconds is " << (now - ztime(3, 10)).toString() << endl;
+
+		ztime negTest(-5);
+		ztime negTest2 = negTest - ztime(3);
+		ztime negTest3 = negTest + ztime(2);
+		ztime negTest4 = negTest - ztime(5, 3);
+
+		negTest.print();
+		negTest2.print();
+		negTest3.print();
+		negTest4.print();
 	}
 
 	cout << endl;

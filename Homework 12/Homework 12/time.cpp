@@ -159,7 +159,7 @@ bool ztime::operator>=(ztime & other)
 
 std::string const ztime::toString()
 {
-	return util::toString(min) + " minutes and " + util::toString(sec) + " seconds";
+	return util::toString(getMin()) + " minutes and " + util::toString(getSec()) + " seconds";
 }
 
 void const ztime::print()

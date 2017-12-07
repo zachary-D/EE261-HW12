@@ -26,9 +26,8 @@ private:
 public:
 	void roundValues();	//Validates that sec < 60, converts to minutes as needed
 
-	//NOTE: getMin() and getSec() do NOT include the negative, if the value is negative
-	int const getMin() { return min; }
-	int const getSec() { return sec; }
+	int const getMin() { return min * (neg ? -1: 1); }
+	int const getSec() { return sec * (neg ? -1: 1); }
 	int const getTotal() { return (neg == true ? -1 : 1) * (min * 60 + sec); }
 
 	ztime operator+(ztime & other);
